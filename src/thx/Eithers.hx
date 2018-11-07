@@ -154,14 +154,14 @@ class Eithers {
   public static function orElse<L, R>(e0: Either<L, R>, e1: Either<L, R>): Either<L, R> {
     return switch e0 {
       case Left(e): e1;
-      case Right: right;
+      case Right(r): Right(r);
     };
   }
 
   public static function orElseF<L, R>(e0: Either<L, R>, f: Void -> Either<L, R>): Either<L, R> {
     return switch e0 {
       case Left(e): f();
-      case Right: right;
+      case Right(r): Right(r);
     };
   }
 
